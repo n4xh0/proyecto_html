@@ -1,0 +1,854 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Productos | El Terremoto</title><link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+
+  :root{
+    --crema: #F3E7CE;
+    --crema-alta: #FBF3E1;
+    --tinta: #2B2018;
+    --tinta-suave: #5A4B3C;
+    --granadina: #A62639;
+    --granadina-oscura: #7E1C2A;
+    --pipeno: #C98A2E;
+    --parron: #5C6B47;
+    --bandera: #2C4767;
+    --linea: rgba(43,32,24,0.16);
+    --radio: 3px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--crema);
+    color:var(--tinta);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.5;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    color:var(--tinta);
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  button{font-family:inherit;}
+  img{max-width:100%;display:block;}
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- HEADER ---------- */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:var(--crema-alta);
+    border-bottom:1px solid var(--linea);
+  }
+  .header-inner{
+    max-width:1080px;
+    margin:0 auto;
+    padding:18px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+  }
+  .brand{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:22px;
+  }
+  .brand span.tag{
+    font-family:'Work Sans', sans-serif;
+    font-size:12px;
+    font-weight:500;
+    color:var(--tinta-suave);
+    border-left:1px solid var(--linea);
+    padding-left:10px;
+  }
+  nav.main-nav{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    font-size:15px;
+    font-weight:500;
+  }
+  nav.main-nav a, nav.main-nav button.linklike{
+    background:none; border:none; cursor:pointer;
+    color:var(--tinta); font-size:15px; font-weight:500; font-family:inherit;
+    padding:0; text-decoration:none;
+    position:relative;
+  }
+  nav.main-nav a:hover, nav.main-nav button.linklike:hover{ color:var(--granadina); }
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    gap:8px;
+    padding:11px 22px;
+    border-radius:var(--radio);
+    border:1px solid transparent;
+    font-weight:600;
+    font-size:14px;
+    cursor:pointer;
+    transition:transform .12s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn:active{ transform:translateY(1px); }
+  .btn-primary{ background:var(--granadina); color:var(--crema-alta); }
+  .btn-primary:hover{ background:var(--granadina-oscura); }
+  .btn-ghost{ background:transparent; color:var(--tinta); border-color:var(--tinta); }
+  .btn-ghost:hover{ background:var(--tinta); color:var(--crema-alta); }
+  .btn-small{ padding:7px 14px; font-size:13px; }
+  .btn-danger{ background:transparent; color:var(--granadina-oscura); border-color:var(--granadina-oscura); }
+  .btn-danger:hover{ background:var(--granadina-oscura); color:var(--crema-alta); }
+
+  .user-chip{
+    display:flex; align-items:center; gap:10px;
+    font-size:14px;
+  }
+  .user-chip .who{ font-weight:600; }
+  .user-chip .who small{ display:block; font-weight:400; color:var(--tinta-suave); font-size:12px; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:64px 0 72px;
+    border-bottom:1px solid var(--linea);
+  }
+  .hero-inner{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero-eyebrow{
+    font-size:14px;
+    color:var(--tinta-suave);
+    margin-bottom:18px;
+    max-width:34ch;
+  }
+  .hero h1{
+    font-size:clamp(40px, 5.4vw, 68px);
+    line-height:1.02;
+    font-weight:600;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--granadina);
+    font-weight:500;
+  }
+  .hero p.lede{
+    margin-top:22px;
+    font-size:18px;
+    color:var(--tinta-suave);
+    max-width:44ch;
+  }
+  .hero-actions{
+    margin-top:32px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .hero-figure{
+    position:relative;
+  }
+  .hero-figure img{
+    width:100%;
+    border-radius:4px;
+    box-shadow: 10px 14px 0 var(--pipeno);
+  }
+  .hero-figure .caption{
+    margin-top:16px;
+    font-size:13px;
+    color:var(--tinta-suave);
+    display:flex;
+    justify-content:space-between;
+    border-top:1px solid var(--linea);
+    padding-top:10px;
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{ padding:64px 0; border-bottom:1px solid var(--linea); }
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    margin-bottom:36px;
+  }
+  .section-head h2{
+    font-size:32px;
+    font-weight:600;
+  }
+  .section-head p{
+    color:var(--tinta-suave);
+    max-width:40ch;
+    font-size:15px;
+    margin:8px 0 0;
+  }
+
+
+  .receta{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:0;
+    border-top:1px solid var(--linea);
+  }
+  .receta .paso{
+    padding:26px 24px;
+    border-right:1px solid var(--linea);
+  }
+  .receta .paso:last-child{ border-right:none; }
+  .receta .num{
+    font-family:'Fraunces', serif;
+    font-size:14px;
+    color:var(--granadina);
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .receta h3{ font-size:18px; font-weight:600; margin-bottom:8px; }
+  .receta p{ font-size:14px; color:var(--tinta-suave); margin:0; }
+
+  /* ---------- MENU ---------- */
+  .menu-categorias{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:8px;
+  }
+  .chip{
+    padding:7px 14px;
+    border-radius:100px;
+    border:1px solid var(--linea);
+    font-size:13px;
+    font-weight:500;
+    background:var(--crema-alta);
+    cursor:pointer;
+  }
+  .chip.active{
+    background:var(--tinta);
+    color:var(--crema-alta);
+    border-color:var(--tinta);
+  }
+  .menu-lista{ margin-top:28px; }
+  .menu-item{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    padding:20px 0;
+    border-top:1px solid var(--linea);
+  }
+  .menu-lista .menu-item:last-child{ border-bottom:1px solid var(--linea); }
+  .menu-item .foto{
+    width:88px;
+    height:88px;
+    flex:none;
+    border-radius:3px;
+    overflow:hidden;
+    background:var(--linea);
+  }
+  .menu-item .foto img{ width:100%; height:100%; object-fit:cover; }
+  .menu-item .fila-principal{
+    display:flex;
+    flex:1;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:24px;
+  }
+  .menu-item .info{ flex:1; }
+  .menu-item .fila-nombre{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .menu-item h3{
+    font-size:19px;
+    font-weight:600;
+  }
+  .menu-item .cat-tag{
+    font-size:11px;
+    text-transform:none;
+    color:var(--parron);
+    border:1px solid var(--parron);
+    padding:2px 8px;
+    border-radius:100px;
+  }
+  .menu-item p{
+    margin:6px 0 0;
+    font-size:14px;
+    color:var(--tinta-suave);
+    max-width:52ch;
+  }
+  .menu-item .precio{
+    font-family:'Fraunces', serif;
+    font-size:20px;
+    font-weight:600;
+    white-space:nowrap;
+    color:var(--granadina-oscura);
+  }
+  .menu-item.agotado{ opacity:0.45; }
+  .menu-item .agotado-tag{
+    font-size:11px; color:var(--tinta-suave); display:block; margin-top:4px;
+  }
+  .menu-vacio{
+    padding:40px 0;
+    color:var(--tinta-suave);
+    font-size:15px;
+    border-top:1px solid var(--linea);
+    border-bottom:1px solid var(--linea);
+  }
+
+
+  /* ---------- CARRITO DE COMPRAS ---------- */
+  .btn-cart{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--tinta);
+    color:var(--crema-alta);
+    border:1px solid var(--tinta);
+    padding:8px 13px;
+    border-radius:var(--radio);
+    cursor:pointer;
+    font-weight:600;
+    font-size:13px;
+  }
+  .btn-cart:hover{ background:var(--granadina-oscura); border-color:var(--granadina-oscura); }
+  .cart-count{
+    min-width:20px;
+    height:20px;
+    padding:0 5px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:var(--granadina);
+    color:#fff;
+    font-size:11px;
+    font-weight:700;
+  }
+  .cart-modal{
+    max-width:560px;
+    max-height:calc(100vh - 40px);
+    overflow:auto;
+  }
+  .cart-list{ margin:22px 0; border-top:1px solid var(--linea); }
+  .cart-row{
+    display:grid;
+    grid-template-columns:1fr auto auto;
+    gap:12px;
+    align-items:center;
+    padding:14px 0;
+    border-bottom:1px solid var(--linea);
+  }
+  .cart-row strong{ display:block; font-size:15px; }
+  .cart-row small{ color:var(--tinta-suave); }
+  .cart-qty{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    border:1px solid var(--linea);
+    border-radius:var(--radio);
+    padding:3px;
+  }
+  .cart-qty button{
+    width:26px; height:26px; border:0; background:transparent; cursor:pointer;
+    font-size:18px; color:var(--tinta);
+  }
+  .cart-qty span{ min-width:18px; text-align:center; font-weight:600; }
+  .cart-price{ font-family:'Fraunces',serif; font-weight:600; white-space:nowrap; }
+  .cart-total{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 0; font-size:18px; font-weight:600;
+  }
+  .cart-total strong{ font-family:'Fraunces',serif; font-size:25px; color:var(--granadina-oscura); }
+  .cart-empty{ padding:30px 0; text-align:center; color:var(--tinta-suave); }
+  .add-cart{
+    margin-top:10px;
+  }
+  .cart-footer-actions{ display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap; }
+  @media (max-width:760px){
+    .btn-cart{ width:100%; justify-content:center; }
+    .cart-row{ grid-template-columns:1fr auto; }
+    .cart-price{ grid-column:2; grid-row:1; }
+    .cart-qty{ grid-column:1 / -1; width:max-content; }
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:40px 0 48px;
+  }
+  .footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:18px;
+  }
+  footer .brand{ font-size:18px; }
+  footer .meta{
+    font-size:13px;
+    color:var(--tinta-suave);
+    text-align:right;
+  }
+
+  /* ---------- MODAL LOGIN ---------- */
+  .overlay{
+    position:fixed; inset:0;
+    background:rgba(43,32,24,0.5);
+    display:flex; align-items:center; justify-content:center;
+    z-index:200;
+    padding:20px;
+  }
+  .hidden{ display:none !important; }
+  .modal{
+    background:var(--crema-alta);
+    max-width:400px;
+    width:100%;
+    padding:36px 32px;
+    border-radius:4px;
+    border:1px solid var(--linea);
+  }
+  #overlay-login .modal{
+    position:relative;
+    overflow:hidden;
+    color:#fff;
+  }
+  #overlay-login .modal::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:url('img/volantin.jpeg');
+    background-size:cover;
+    background-position:center 20%;
+    z-index:0;
+  }
+  #overlay-login .modal::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(20,14,10,0.55) 0%, rgba(20,14,10,0.86) 65%, rgba(20,14,10,0.94) 100%);
+    z-index:0;
+  }
+  #overlay-login .modal > *{ position:relative; z-index:1; }
+  #overlay-login .modal h2{ color:#fff; }
+  #overlay-login .modal .sub{ color:rgba(255,255,255,0.75); }
+  #overlay-login .campo label{ color:#fff; }
+  #overlay-login .close-x{ color:rgba(255,255,255,0.8); }
+  #overlay-login .hint-credenciales{ color:rgba(255,255,255,0.7); border-top-color:rgba(255,255,255,0.25); }
+  .modal h2{ font-size:24px; margin-bottom:6px; }
+  .modal .sub{ font-size:14px; color:var(--tinta-suave); margin-bottom:26px; }
+  .campo{ margin-bottom:16px; }
+  .campo label{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .campo input, .campo select, .campo textarea{
+    width:100%;
+    padding:11px 12px;
+    border:1px solid var(--linea);
+    border-radius:3px;
+    font-size:14px;
+    font-family:inherit;
+    background:#fff;
+    color:var(--tinta);
+  }
+  .campo textarea{ resize:vertical; min-height:70px; }
+  .campo input:focus, .campo select:focus, .campo textarea:focus{
+    outline:2px solid var(--bandera);
+    outline-offset:1px;
+  }
+  .modal-actions{
+    display:flex; justify-content:flex-end; gap:10px; margin-top:24px;
+  }
+  .error-msg{
+    background:rgba(166,38,57,0.1);
+    color:var(--granadina-oscura);
+    font-size:13px;
+    padding:10px 12px;
+    border-radius:3px;
+    margin-bottom:16px;
+  }
+  .hint-credenciales{
+    margin-top:20px;
+    font-size:12px;
+    color:var(--tinta-suave);
+    border-top:1px dashed var(--linea);
+    padding-top:14px;
+  }
+  .close-x{
+    position:absolute; top:14px; right:16px;
+    background:none; border:none; cursor:pointer;
+    font-size:20px; color:var(--tinta-suave); line-height:1;
+  }
+  .modal{ position:relative; }
+
+  /* ---------- ADMIN ---------- */
+  #vista-admin{ display:none; }
+  #vista-admin.activa{ display:block; }
+  #vista-publica.oculta{ display:none; }
+
+  .admin-header{
+    padding:40px 0 28px;
+    border-bottom:1px solid var(--linea);
+  }
+  .admin-header .kicker{
+    font-size:13px; color:var(--parron); font-weight:600; margin-bottom:8px;
+  }
+  .admin-header h1{ font-size:34px; }
+  .admin-header p{ color:var(--tinta-suave); margin-top:10px; max-width:56ch; font-size:15px;}
+
+  .admin-toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:34px 0 18px;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .admin-toolbar .filtro-cat select{
+    padding:9px 12px;
+    border-radius:3px;
+    border:1px solid var(--linea);
+    font-size:13px;
+    background:#fff;
+  }
+
+  table.tabla-productos{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+    margin-bottom:60px;
+  }
+  table.tabla-productos th{
+    text-align:left;
+    font-size:12px;
+    text-transform:none;
+    color:var(--tinta-suave);
+    font-weight:600;
+    padding:0 12px 10px;
+    border-bottom:1px solid var(--tinta);
+  }
+  table.tabla-productos td{
+    padding:16px 12px;
+    border-bottom:1px solid var(--linea);
+    vertical-align:top;
+  }
+  table.tabla-productos td.nombre-cell{ display:flex; gap:12px; align-items:flex-start; }
+  table.tabla-productos td.nombre-cell .foto-mini{
+    width:52px; height:52px; flex:none; border-radius:3px; overflow:hidden; background:var(--linea);
+  }
+  table.tabla-productos td.nombre-cell .foto-mini img{ width:100%; height:100%; object-fit:cover; }
+  table.tabla-productos td.nombre-cell strong{ display:block; font-size:15px; }
+  table.tabla-productos td.nombre-cell span{ font-size:13px; color:var(--tinta-suave); }
+  .estado-pill{
+    display:inline-block;
+    font-size:11px;
+    padding:3px 9px;
+    border-radius:100px;
+    font-weight:600;
+  }
+  .estado-pill.on{ background:rgba(92,107,71,0.15); color:var(--parron); }
+  .estado-pill.off{ background:rgba(166,38,57,0.1); color:var(--granadina-oscura); }
+  .fila-acciones{ display:flex; gap:8px; }
+
+  .form-modal-wide{ max-width:560px; }
+  .form-grid-2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0 16px;
+  }
+
+  @media (max-width: 760px){
+    .header-inner{ flex-wrap:wrap; }
+    nav.main-nav{ order:3; width:100%; justify-content:space-between; padding-top:10px; border-top:1px solid var(--linea); margin-top:10px;}
+    .hero-inner{ grid-template-columns:1fr; }
+    .hero-figure{ order:-1; }
+    .receta{ grid-template-columns:1fr; }
+    .receta .paso{ border-right:none; border-bottom:1px solid var(--linea); }
+    .form-grid-2{ grid-template-columns:1fr; }
+    table.tabla-productos thead{ display:none; }
+    table.tabla-productos, table.tabla-productos tbody, table.tabla-productos tr, table.tabla-productos td{ display:block; width:100%; }
+    table.tabla-productos tr{ border-bottom:2px solid var(--tinta); padding:12px 0; }
+    table.tabla-productos td{ border-bottom:none; padding:4px 0; }
+  }
+
+nav.main-nav{flex-wrap:wrap;gap:14px}.overlay .modal{max-height:90vh;overflow-y:auto}.login-page{min-height:100vh}.login-page .modal{max-height:none} :focus-visible{outline:2px solid var(--bandera);outline-offset:3px}@media(max-width:480px){.header-inner,.wrap{padding-left:16px;padding-right:16px}.brand{flex-wrap:wrap}.modal{padding:28px 20px}.fila-acciones{flex-wrap:wrap}.cart-row{gap:8px}}
+[hidden]{display:none !important;}
+#overlay-login .close-x{position:absolute;top:14px;right:16px;text-decoration:none} #overlay-login .btn-ghost{color:#fff;border-color:#fff} .login-page{background:var(--crema)} @media(max-width:480px){.menu-item .fila-principal{flex-direction:column;align-items:flex-start;gap:12px}.menu-item .precio{display:flex;align-items:center;gap:12px}.menu-item .info{min-width:0}}
+
+</style></head><body><header class="site"><div class="header-inner"><a class="brand" href="index.html" style="text-decoration:none">El Terremoto <span class="tag">Fonda Dieciochera</span></a><nav class="main-nav"><a href="index.html#carta">La carta</a><a href="index.html#receta">La receta</a><a href="productos.html">Mantenedor de productos</a>  <span class="user-chip" id="chip-usuario"></span><a class="btn btn-ghost btn-small" id="btn-login" href="login.html">Iniciar sesión</a><button class="btn btn-ghost btn-small" id="btn-logout" hidden>Cerrar sesión</button></nav></div></header><div id="vista-admin" class="activa">
+  <div class="wrap admin-header">
+    <div class="kicker">Mantenedor</div>
+    <h1>Productos de la fonda</h1>
+    <p>Acá se agregan, editan y se dan de baja los productos que aparecen en la carta pública.</p>
+  </div>
+
+  <div class="wrap">
+    <div class="admin-toolbar">
+      <div class="filtro-cat">
+        <select id="admin-filtro-cat"></select>
+      </div>
+      <button class="btn btn-primary btn-small" id="btn-nuevo-producto">Agregar producto</button>
+    </div>
+
+    <table class="tabla-productos">
+      <thead>
+        <tr>
+          <th style="width:36%">Producto</th>
+          <th>Categoría</th>
+          <th>Precio</th>
+          <th>Estado</th>
+          <th style="width:160px">Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tbody-admin"></tbody>
+    </table>
+  </div>
+</div>
+
+<footer id="pie">
+  <div class="wrap footer-inner">
+    <div class="brand">El Terremoto</div>
+    <div class="meta">Fiestas Patrias · Fonda Dieciochera<br>Bebe con moderación.</div>
+  </div>
+</footer>
+
+<div class="overlay hidden" id="overlay-producto">
+  <div class="modal form-modal-wide">
+    <button class="close-x" id="cerrar-producto">&times;</button>
+    <h2 id="titulo-modal-producto">Agregar producto</h2>
+    <p class="sub">Estos datos se muestran tal cual en la carta pública.</p>
+    <form id="form-producto">
+      <input type="hidden" id="producto-id">
+      <input type="hidden" id="producto-foto-data">
+      <div class="campo">
+        <label for="producto-nombre">Nombre</label>
+        <input type="text" id="producto-nombre" maxlength="100" required placeholder="Ej: Choripán completo">
+      </div>
+      <div class="campo">
+        <label for="producto-foto">Foto</label>
+        <input type="file" id="producto-foto" accept="image/*">
+        <div id="preview-foto" style="margin-top:10px; display:none;">
+          <img id="preview-foto-img" style="width:100px; height:100px; object-fit:cover; border-radius:3px;">
+        </div>
+      </div>
+      <div class="form-grid-2">
+        <div class="campo">
+          <label for="producto-categoria">Categoría</label>
+          <select id="producto-categoria">
+            <option value="Piqueos">Piqueos</option>
+            <option value="Tragos">Tragos</option>
+            <option value="Bebidas frías">Bebidas frías</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="producto-precio">Precio (CLP)</label>
+          <input type="number" id="producto-precio" min="0" step="1" required placeholder="3500">
+        </div>
+      </div>
+      <div class="campo">
+        <label for="producto-desc">Descripción</label>
+        <textarea id="producto-desc" maxlength="500" placeholder="Breve descripción para la carta"></textarea>
+      </div>
+      <div class="campo">
+        <label><input type="checkbox" id="producto-disponible" checked style="width:auto; display:inline-block; margin-right:8px;">Disponible en la carta</label>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost btn-small" id="cancelar-producto">Cancelar</button>
+        <button type="submit" class="btn btn-primary btn-small">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+const SEED_PRODUCTOS = [
+    { id: 1, nombre: "Terremoto clásico", categoria: "Tragos", precio: 4890, desc: "Pipeño helado, granadina y helado de piña.", disponible: true, foto: "img/terremoto-clasico.jpg" },
+    { id: 2, nombre: "Terremoto de niños", categoria: "Tragos", precio: 2500, desc: "La versión sin alcohol: bebida de piña, granadina y helado de piña.", disponible: true, foto: "img/terremoto-nino.jpg" },
+    { id: 3, nombre: "Piscola", categoria: "Tragos", precio: 7890, desc: "Pisco con bebida cola, al gusto.", disponible: true, foto: "img/piscola.jpg" },
+    
+    { id: 4, nombre: "Choripán", categoria: "Piqueos", precio: 13000, desc: "Chorizo a la parrilla en marraqueta, con chancho en piedra.", disponible: true, foto: "img/choripan.jpg" },
+    { id: 5, nombre: "Anticuchos", categoria: "Piqueos", precio: 15000, desc: "Brochetas de carne a la parrilla con verduras.", disponible: true, foto: "img/anticuchos.jpg" },
+    { id: 6, nombre: "Cerveza", categoria: "Bebidas frías", precio: 4000, desc: "Botella o schop, bien helada.", disponible: true, foto: "img/cerveza.jpg" },
+    { id: 7, nombre: "Completo", categoria: "Piqueos", precio: 2900, desc: "Vienesa con tomate, palta y mayonesa.", disponible: true, foto: "img/completo.jpg" },
+    { id: 8, nombre: "Empanadas", categoria: "Piqueos", precio: 5000, desc: "De pino, horneadas, con pebre picante.", disponible: true, foto: "img/empanadas.jpg" },
+    { id: 9, nombre: "Papas fritas", categoria: "Piqueos", precio: 3000, desc: "Con parmesano y una pizca de ketchup.", disponible: true, foto: "img/papas-fritas.jpg" },
+    {id : 10, nombre: "chicha en cacho", categoria: "Tragos", precio:5800, desc: "chiha en un cacho del kast.", disponible: true, foto: "img/image.png"}
+  ];
+const KEY_PRODUCTOS='terremoto_productos_v1', KEY_SESION='terremoto_sesion_v1';
+function leerJSON(storage,key,fallback){try{return JSON.parse(storage.getItem(key)) ?? fallback;}catch(e){return fallback;}}
+function cargarProductos(){const p=leerJSON(localStorage,KEY_PRODUCTOS,null);return Array.isArray(p)&&p.every(x=>Number.isInteger(x.id)&&typeof x.nombre==='string'&&Number.isFinite(x.precio))?p:structuredClone(SEED_PRODUCTOS);}
+function leerSesion(){const s=leerJSON(sessionStorage,KEY_SESION,null);return s&&s.usuario==='admin'&&s.rol==='admin'&&s.expira>Date.now()?s:null;}
+function exigirSesion(){if(!leerSesion()){location.replace('login.html');return false;}return true;}
+function guardarProductos(){if(!exigirSesion())return false;try{localStorage.setItem(KEY_PRODUCTOS,JSON.stringify(productos));return true;}catch(e){alert('No se pudo guardar. El almacenamiento puede estar lleno; prueba con una foto más pequeña.');productos=cargarProductos();return false;}}
+var productos=cargarProductos();
+var siguienteId=Math.max(0,...productos.map(p=>p.id))+1;
+var categorias=['Piqueos','Tragos','Bebidas frías'];
+var formateador=new Intl.NumberFormat('es-CL');
+function clp(n){return '$'+formateador.format(n);}
+function escapeHtml(str){var d=document.createElement('div');d.textContent=str;return d.innerHTML.replaceAll('"','&quot;');}
+function header(){const s=leerSesion();if($('btn-login'))$('btn-login').hidden=!!s;if($('btn-logout')){$('btn-logout').hidden=!s;$('btn-logout').onclick=()=>{sessionStorage.removeItem(KEY_SESION);location.href='index.html';};}if($('chip-usuario'))$('chip-usuario').textContent=s?'admin · Administrador':'';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.overlay:not(.login-page)').forEach(x=>x.classList.add('hidden'));});
+
+</script><script>
+if(exigirSesion()){
+var overlayProducto=$('overlay-producto'),formProducto=$('form-producto'),tituloModalProducto=$('titulo-modal-producto');
+ // ---------- MANTENEDOR (ADMIN) ----------
+  function renderFiltroAdmin(){
+    var sel = $('admin-filtro-cat');
+    var actual = sel.value || "Todas";
+    var todas = ["Todas"].concat(categorias);
+    sel.innerHTML = '';
+    todas.forEach(function(cat){
+      var o = document.createElement('option');
+      o.value = cat; o.textContent = cat === "Todas" ? "Todas las categorías" : cat;
+      sel.appendChild(o);
+    });
+    sel.value = actual;
+  }
+
+  function renderAdmin(){
+    renderFiltroAdmin();
+    var filtro = $('admin-filtro-cat').value || "Todas";
+    var tbody = $('tbody-admin');
+    var lista = productos.filter(function(p){
+      return filtro === "Todas" || p.categoria === filtro;
+    });
+    tbody.innerHTML = '';
+    if(lista.length === 0){
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td colspan="5" style="color:var(--tinta-suave); padding:24px 12px;">No hay productos en esta categoría todavía.</td>';
+      tbody.appendChild(tr);
+      return;
+    }
+    lista.forEach(function(p){
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td class="nombre-cell">' +
+          (p.foto ? '<div class="foto-mini"><img src="' + p.foto + '" alt=""></div>' : '') +
+          '<div><strong>' + escapeHtml(p.nombre) + '</strong><span>' + escapeHtml(p.desc || '') + '</span></div>' +
+        '</td>' +
+        '<td>' + escapeHtml(p.categoria) + '</td>' +
+        '<td>' + clp(p.precio) + '</td>' +
+        '<td><span class="estado-pill ' + (p.disponible ? 'on' : 'off') + '">' + (p.disponible ? 'Disponible' : 'Agotado') + '</span></td>' +
+        '<td><div class="fila-acciones">' +
+          '<button class="btn btn-ghost btn-small" data-editar="' + p.id + '">Editar</button>' +
+          '<button class="btn btn-danger btn-small" data-eliminar="' + p.id + '">Eliminar</button>' +
+        '</div></td>';
+      tbody.appendChild(tr);
+    });
+
+    tbody.querySelectorAll('[data-editar]').forEach(function(btn){
+      btn.addEventListener('click', function(){ abrirModalProducto(parseInt(btn.getAttribute('data-editar'), 10)); });
+    });
+    tbody.querySelectorAll('[data-eliminar]').forEach(function(btn){
+      btn.addEventListener('click', function(){ eliminarProducto(parseInt(btn.getAttribute('data-eliminar'), 10)); });
+    });
+  }
+
+  $('admin-filtro-cat').addEventListener('change', renderAdmin);
+  $('btn-nuevo-producto').addEventListener('click', function(){ abrirModalProducto(null); });
+
+  var previewFoto = $('preview-foto');
+  var previewFotoImg = $('preview-foto-img');
+  var inputFoto = $('producto-foto');
+  var fotoDataInput = $('producto-foto-data');
+
+  inputFoto.addEventListener('change', function(){
+    var archivo = inputFoto.files && inputFoto.files[0];
+    if(!archivo) return;
+    if(!/^image\/(jpeg|png|webp|gif)$/.test(archivo.type)||archivo.size>750000){alert("Selecciona una imagen JPG, PNG, WebP o GIF de hasta 750 KB.");inputFoto.value="";return;}
+    var lector = new FileReader();
+    lector.onload = function(e){
+      fotoDataInput.value = e.target.result;
+      previewFotoImg.src = e.target.result;
+      previewFoto.style.display = 'block';
+    };
+    lector.readAsDataURL(archivo);
+  });
+
+  function abrirModalProducto(id){
+    if(!exigirSesion()) return;
+    formProducto.reset();
+    fotoDataInput.value = '';
+    previewFoto.style.display = 'none';
+    if(id){
+      var p = productos.find(function(x){ return x.id === id; });
+      if(!p) return;
+      tituloModalProducto.textContent = 'Editar producto';
+      $('producto-id').value = p.id;
+      $('producto-nombre').value = p.nombre;
+      $('producto-categoria').value = p.categoria;
+      $('producto-precio').value = p.precio;
+      $('producto-desc').value = p.desc || '';
+      $('producto-disponible').checked = p.disponible;
+      if(p.foto){
+        fotoDataInput.value = p.foto;
+        previewFotoImg.src = p.foto;
+        previewFoto.style.display = 'block';
+      }
+    } else {
+      tituloModalProducto.textContent = 'Agregar producto';
+      $('producto-id').value = '';
+      $('producto-disponible').checked = true;
+    }
+    overlayProducto.classList.remove('hidden');
+    $('producto-nombre').focus();
+  }
+  function cerrarModalProducto(){ overlayProducto.classList.add('hidden'); }
+
+  $('cerrar-producto').addEventListener('click', cerrarModalProducto);
+  $('cancelar-producto').addEventListener('click', cerrarModalProducto);
+  overlayProducto.addEventListener('click', function(e){ if(e.target === overlayProducto) cerrarModalProducto(); });
+
+  formProducto.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!exigirSesion()) return;
+    var id = $('producto-id').value;
+    var datos = {
+      nombre: $('producto-nombre').value.trim(),
+      categoria: $('producto-categoria').value,
+      precio: parseInt($('producto-precio').value, 10) || 0,
+      desc: $('producto-desc').value.trim(),
+      disponible: $('producto-disponible').checked,
+      foto: fotoDataInput.value || ''
+    };
+    if(!datos.nombre || !Number.isSafeInteger(Number($("producto-precio").value)) || Number($("producto-precio").value)<0) { alert("Escribe un nombre y un precio entero válido."); return; }
+    if(id && !datos.foto){
+      var existente = productos.find(function(x){ return x.id === parseInt(id, 10); });
+      if(existente) datos.foto = existente.foto || '';
+    }
+
+    if(id){
+      var idx = productos.findIndex(function(x){ return x.id === parseInt(id, 10); });
+      if(idx > -1) productos[idx] = Object.assign({ id: parseInt(id, 10) }, datos);
+    } else {
+      productos.push(Object.assign({ id: siguienteId++ }, datos));
+    }
+    if(!guardarProductos()) return;
+    cerrarModalProducto();
+    renderAdmin();
+
+  });
+
+  function eliminarProducto(id){
+    var p = productos.find(function(x){ return x.id === id; });
+    if(!p) return;
+    if(!confirm('¿Eliminar "' + p.nombre + '" de la carta?')) return;
+    productos = productos.filter(function(x){ return x.id !== id; });
+    if(!guardarProductos()) return;
+    renderAdmin();
+
+  }
+
+
+renderAdmin();header();setInterval(exigirSesion,30000);window.addEventListener('pageshow',exigirSesion);
+}
+</script></body></html>

@@ -1,0 +1,21 @@
+# Configuración privada y secretos
+.env
+.env.*
+!.env.example
+config.local.js
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.json
+id_rsa*
+id_ed25519*
+# Archivos locales
+.DS_Store
+Thumbs.db
+desktop.ini
+node_modules/
+*.log
+.vscode/
+.idea/
